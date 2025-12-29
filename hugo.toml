@@ -1,0 +1,7 @@
+baseURL = 'https://jvchincholi.github.io/'
+languageCode = 'en-us'
+title = 'My AI-PL Journey'
+theme = 'ananke'
+
+[params]
+  description = 'Documenting my path in AI and Programming Languages'
