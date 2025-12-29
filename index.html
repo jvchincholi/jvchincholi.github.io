@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | .NET & AI Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: #f8fafc; }
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 </head>
-<body>
-    <h1>Welcome to my AI-PL Journey</h1>
-    <p>I am currently building a .NET end-to-end project on Azure. Stay tuned!</p>
+<body class="font-sans antialiased">
+
+    <div class="min-h-screen flex items-center justify-center px-6">
+        <div class="max-w-3xl w-full space-y-8 text-center">
+            
+            <header>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">
+                    Hi, I'm <span class="gradient-text">Your Name</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-slate-400 font-medium">
+                    Software Engineer | .NET & AI-PL Enthusiast
+                </p>
+            </header>
+
+            <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-2xl backdrop-blur-sm">
+                <h2 class="text-blue-400 font-bold uppercase tracking-widest text-sm mb-4">Current Mission</h2>
+                <p class="text-lg text-slate-200">
+                    Building a <span class="text-white font-semibold">.NET End-to-End Application</span> 
+                    deployed on <span class="text-white font-semibold">Azure</span>.
+                </p>
+                <div class="mt-4 flex justify-center gap-2">
+                    <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs border border-blue-500/20">.NET Core</span>
+                    <span class="bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full text-xs border border-indigo-500/20">Azure App Service</span>
+                    <span class="bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full text-xs border border-sky-500/20">AI-PL Journey</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 pt-6">
+                <a href="https://github.com/yourusername" class="w-full md:w-auto px-8 py-3 bg-white text-slate-900 font-bold rounded-full hover:bg-slate-200 transition-all">
+                    View GitHub
+                </a>
+                <a href="mailto:your-email@example.com" class="w-full md:w-auto px-8 py-3 bg-slate-800 text-white font-bold rounded-full border border-slate-700 hover:bg-slate-700 transition-all">
+                    Contact Me
+                </a>
+            </div>
+
+            <footer class="pt-12 text-slate-500 text-sm italic">
+                Hosted for free on GitHub Pages
+            </footer>
+
+        </div>
+    </div>
+
 </body>
 </html>
