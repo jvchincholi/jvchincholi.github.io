@@ -13,7 +13,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.x' # Change to 9.x if needed
+          dotnet-version: '8.0.x' # Change to 9.x if needed
 
       - name: Build with dotnet
         run: dotnet build MyModernApi_New/MyModernApi.csproj --configuration Release
