@@ -17,14 +17,14 @@ jobs:
 
       - name: Build with dotnet
         run: dotnet build MyModernApi_New/MyModernApi.csproj --configuration Release
-        
+
       - name: dotnet publish
         run: dotnet publish MyModernApi_New/MyModernApi.csproj -c Release -o ./publish
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'mydotnet11'
+          app-name: 'mydotnet12' # Replace with your Web App name
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: './publish'
           # This removes old files that might be causing the 403/Crash
@@ -34,4 +34,4 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az webapp start --name mydotnet11 --resource-group rg-my-project-prod
+            az webapp start --name mydotnet12 --resource-group rg-my-project-prod
