@@ -2,8 +2,7 @@ using Azure.Monitor.OpenTelemetry.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add OpenAPI support
-builder.Services.AddOpenApi(); 
+// Add OpenAPI support 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -18,16 +17,21 @@ builder.Services.AddOpenTelemetry()
 var app = builder.Build();
 
 // Serve OpenAPI UI
-app.MapOpenApi();
-
-// ✅ Update the SwaggerUI to point to the correct JSON location
-app.UseSwagger();
-app.UseSwaggerUI(options =>
+//app.MapOpenApi();
+// Replace app.MapOpenApi() with:
+if (app.Environment.IsDevelopment() || true) // 'true' helps us see it in Azure for now
 {
-    // Point to the .NET 9 OpenAPI document
-    options.SwaggerEndpoint("/openapi/v1.json", "v1");
-    options.RoutePrefix = string.Empty; 
-});
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+// ✅ Update the SwaggerUI to point to the correct JSON location
+// app.UseSwagger();
+// app.UseSwaggerUI(options =>
+// {
+//     // Point to the .NET 9 OpenAPI document
+//     options.SwaggerEndpoint("/openapi/v1.json", "v1");
+//     options.RoutePrefix = string.Empty; 
+// });
 
 var products = new List<Product>();
 
