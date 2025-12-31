@@ -1,3 +1,5 @@
+using Azure.Storage.Queues;
+using System.Text.Json;
 using Azure.Monitor.OpenTelemetry.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,12 +9,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Enable Azure Monitor OpenTelemetry
-var connectionString = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"];
-builder.Services.AddOpenTelemetry()
-   .UseAzureMonitor(options => 
-   {
-       options.ConnectionString = connectionString;
-   });
+// var connectionString = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"];
+// builder.Services.AddOpenTelemetry()
+//    .UseAzureMonitor(options => 
+//    {
+//        options.ConnectionString = connectionString;
+//    });
 
 var app = builder.Build();
 
@@ -39,8 +41,18 @@ var products = new List<Product>();
 app.MapGet("/products", () => products);
 
 // POST /products
-app.MapPost("/products", (Product product) => {
+app.MapPost("/products", async (Product product) => {
     products.Add(product);
+    var connectionString = builder.Configuration.GetConnectionString("AzureWebJobsStorage") 
+    ?? throw new InvalidOperationException("A connection string was not found...");
+    var queueClient = new QueueClient(connectionString, "product-updates");
+    await queueClient.CreateIfNotExistsAsync();
+    if (await queueClient.ExistsAsync())
+    {
+        var message = JsonSerializer.Serialize(product);
+        await queueClient.SendMessageAsync(Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(message)));
+    }
+
     return Results.Created($"/products/{product.Id}", product);
 });
 
