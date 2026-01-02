@@ -1,8 +1,0 @@
-name: dotnet10-product-api
-metadata:
-  template: azd-init@1.0.0
-services:
-  web:
-    project: . # Points to the folder where your .csproj lives
-    language: dotnet
-    host: containerapp # This tells Azure to use Container Apps (Best for Minimal APIs)

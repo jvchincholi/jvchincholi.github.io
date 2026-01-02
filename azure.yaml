@@ -1,14 +1,8 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
-
-name: mymodernapi
+name: dotnet10-product-api
 metadata:
-    template: azd-init@1.22.5
+  template: azd-init@1.0.0
 services:
-    my-modern-api:
-        project: MyModernApi
-        host: containerapp
-        language: dotnet
-resources:
-    my-modern-api:
-        type: host.containerapp
-        port: 8080
+  web:
+    project: . # Points to the folder where your .csproj lives
+    language: dotnet
+    host: containerapp # This tells Azure to use Container Apps (Best for Minimal APIs)
