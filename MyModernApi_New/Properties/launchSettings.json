@@ -19,5 +19,14 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
-  }
+  },
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "InstrumentationKey=e78a8b5d-1ec7-442c-8fa9-f36a9e47d66c;IngestionEndpoint=https://canadacentral-1.in.applicationinsights.azure.com/;LiveEndpoint=https://canadacentral.livediagnostics.monitor.azure.com/;ApplicationId=3201c095-13f6-4425-bc29-c848bb321788",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "AzureAd__Instance": "https://login.microsoftonline.com/",
+    "AzureAd__TenantId": "28bc4490-66a0-467e-a5ab-fb098c0dbb06",
+    "AzureAd__ClientId": "b642878a-ce35-48f5-8478-dd20a1b2ced6",
+    "AzureAd__Audience": "api://b642878a-ce35-48f5-8478-dd20a1b2ced6"
+    }
 }
